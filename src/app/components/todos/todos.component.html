@@ -2,11 +2,11 @@
   <mat-card-title>Todo tasks list</mat-card-title>
   <mat-card-content>
 
-    <mat-table #table [dataSource]="dataSource" matSort matSortActive="firstName" matSortDisableClear
+    <mat-table #table [dataSource]="dataSource" matSort matSortActive="title" matSortDisableClear
       matSortDirection="asc">
 
       <ng-container matColumnDef="title">
-        <mat-header-cell *matHeaderCellDef> Title </mat-header-cell>
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Title </mat-header-cell>
         <mat-cell *matCellDef="let element" (click)="goToEntity(element.id)"> {{element.title}} </mat-cell>
       </ng-container>
 
@@ -21,7 +21,7 @@
       </ng-container>
 
       <ng-container matColumnDef="status">
-        <mat-header-cell *matHeaderCellDef> Status </mat-header-cell>
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Status </mat-header-cell>
         <mat-cell *matCellDef="let element">
           <mat-chip-list aria-label="status">
             <mat-chip color="accent" selected (click)="goToEntity(element.id)"> {{element.status}} </mat-chip>

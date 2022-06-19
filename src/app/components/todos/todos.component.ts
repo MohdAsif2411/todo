@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, EventEmitter, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
@@ -20,7 +20,7 @@ export class TodosComponent implements OnInit, AfterViewInit {
   resultsLength = 0;
   isLoadingResults = true;
   isRateLimitReached = false;
-  change = new BehaviorSubject<any>(undefined);
+  change = new EventEmitter<any>(undefined);
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
@@ -36,7 +36,7 @@ export class TodosComponent implements OnInit, AfterViewInit {
     // If the user changes the sort order, reset back to the first page.
     this.sort?.sortChange?.subscribe(() => this.paginator.pageIndex = 0);
 
-    merge(this.change, this.paginator.page)
+    merge(this.change, this.sort.sortChange, this.paginator.page)
       .pipe(
         startWith({}),
         switchMap(() => {
