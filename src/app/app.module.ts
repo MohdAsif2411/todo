@@ -4,12 +4,13 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { PostsComponent } from './components/posts/posts.component';
+import { TodoComponent } from './components/todos/todo.component';
+import { SharedModule } from './shared';
 
 @NgModule({
   declarations: [
     AppComponent,
-    PostsComponent,
+    TodoComponent,
   ],
   imports: [
     BrowserModule,
@@ -17,6 +18,7 @@ import { PostsComponent } from './components/posts/posts.component';
     BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
+    SharedModule,
 
   ],
   providers: [],

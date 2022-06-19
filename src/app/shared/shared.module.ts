@@ -34,7 +34,7 @@ const materialModules = [
   MatButtonModule, MatOptionModule, MatDialogModule, MatSnackBarModule,
   MatSelectModule, MatInputModule, MatCardModule, MatIconModule, MatRadioModule,
   MatTableModule, MatPaginatorModule, MatSortModule, MatAutocompleteModule,
-  MatDatepickerModule, MatNativeDateModule,
+  MatDatepickerModule, MatNativeDateModule
 ]
 
 @NgModule({

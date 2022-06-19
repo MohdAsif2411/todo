@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { FormControl, AbstractControl } from '@angular/forms';
-import { FloatLabelType } from '@angular/material';
+import { FloatLabelType } from '@angular/material/form-field';
 
 @Component({
   selector: 'app-date',
@@ -8,17 +8,17 @@ import { FloatLabelType } from '@angular/material';
   styleUrls: ['./app-date.component.scss']
 })
 export class AppDateComponent implements OnInit {
-  @Input() form: AbstractControl;
-  @Input() name: string;
-  @Input() label: string;
-  @Input() type: string;
-  @Input() showInputValidationMessages: boolean;
-  @Input() tooltiptext: string;
-  @Input() icon: string;
-  @Input() isDisabled: boolean;
-  @Input() floatLabel: FloatLabelType;
-  control: AbstractControl;
-  isRequired: boolean;
+  @Input() form!: AbstractControl;
+  @Input() name!: string;
+  @Input() label!: string;
+  @Input() type!: string;
+  @Input() showInputValidationMessages!: boolean;
+  @Input() tooltiptext!: string;
+  @Input() icon!: string;
+  @Input() isDisabled!: boolean;
+  @Input() floatLabel!: FloatLabelType;
+  control!: FormControl;
+  isRequired!: boolean;
 
   constructor() { }
 
@@ -28,10 +28,10 @@ export class AppDateComponent implements OnInit {
       this.type = 'text';
     }
 
-    this.control = this.form.get(this.name);
+    this.control = this.form.get(this.name) as FormControl;
     if (this.control && this.control.validator) {
       const validator = this.control.validator(new FormControl());
-      this.isRequired = (validator && validator.required) ? true : false;
+      this.isRequired = (validator && validator['required']) ? true : false;
     }
 
     // Default float type Auto

@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { PostsComponent } from './components/posts/posts.component';
+import { TodoComponent } from './components/todos/todo.component';
 
 const routes: Routes = [
-  {path: '', component: PostsComponent}
+  {path: '', component: TodoComponent}
 ];
 
 @NgModule({

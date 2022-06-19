@@ -1,11 +1,7 @@
-<<<<<<< HEAD
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { environment } from 'src/environments/environment';
+import { environment } from '@env/environment';
 import { map } from 'rxjs'
-=======
-import { Injectable } from '@angular/core';
->>>>>>> 69d8a7adad2d5a4677012ac6cb18eed9b9817656
 
 @Injectable({
   providedIn: 'root'
