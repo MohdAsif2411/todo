@@ -2,7 +2,8 @@
   <mat-card-title>Todo tasks list</mat-card-title>
   <mat-card-content>
 
-    <mat-table #table [dataSource]="dataSource" matSort matSortActive="firstName" matSortDisableClear matSortDirection="asc">
+    <mat-table #table [dataSource]="dataSource" matSort matSortActive="firstName" matSortDisableClear
+      matSortDirection="asc">
 
       <ng-container matColumnDef="title">
         <mat-header-cell *matHeaderCellDef> Title </mat-header-cell>
@@ -11,35 +12,42 @@
 
       <ng-container matColumnDef="description">
         <mat-header-cell *matHeaderCellDef> Description </mat-header-cell>
-        <mat-cell *matCellDef="let element"> {{element.description}} </mat-cell>
+        <mat-cell *matCellDef="let element" (click)="goToEntity(element.id)"> {{element.description}} </mat-cell>
       </ng-container>
 
       <ng-container matColumnDef="targetDate">
         <mat-header-cell *matHeaderCellDef mat-sort-header disableClear="true"> Date </mat-header-cell>
-        <mat-cell *matCellDef="let element"> {{element.targetDate | date}} </mat-cell>
+        <mat-cell *matCellDef="let element" (click)="goToEntity(element.id)"> {{element.targetDate | date}} </mat-cell>
       </ng-container>
 
       <ng-container matColumnDef="status">
         <mat-header-cell *matHeaderCellDef> Status </mat-header-cell>
-        <mat-cell *matCellDef="let element" >
+        <mat-cell *matCellDef="let element">
           <mat-chip-list aria-label="status">
-            <mat-chip color="accent" selected> {{element.status}} </mat-chip>
+            <mat-chip color="accent" selected (click)="goToEntity(element.id)"> {{element.status}} </mat-chip>
           </mat-chip-list>
         </mat-cell>
       </ng-container>
+
+      <ng-container matColumnDef="id">
+        <mat-header-cell *matHeaderCellDef> Action </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.action}}
+            <mat-icon (click)="deleteRow(element.id)" color="primary">delete</mat-icon>
+        </mat-cell>
+      </ng-container>
+
 
       <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
       <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
     </mat-table>
 
-    <button [routerLink]="['new']" mat-fab color="primary" >
-      <mat-icon >add</mat-icon>
+    <button [routerLink]="['new']" mat-fab color="primary">
+      <mat-icon>add</mat-icon>
     </button>
 
-    <mat-paginator #paginator [length]="resultsLength" [pageSize]="10" [pageSizeOptions]="[5, 10, 20, 30]" [showFirstLastButtons]="true">
+    <mat-paginator #paginator [length]="resultsLength" [pageSize]="10" [pageSizeOptions]="[5, 10, 20, 30]"
+      [showFirstLastButtons]="true">
     </mat-paginator>
 
   </mat-card-content>
 </mat-card>
-
-

@@ -25,4 +25,8 @@ export class TodoService {
     return response;
   }
 
+  delete(id: number){
+    return this.http.delete(`todo/${id}`);
+  }
+
 }

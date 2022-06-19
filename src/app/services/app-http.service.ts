@@ -36,4 +36,8 @@ export class AppHttpService {
     return response;
   }
 
+  delete<T>(resourceUrl: string) {
+    return this.http.delete<T>(`${this.appUrl}${resourceUrl}`);
+  }
+
 }

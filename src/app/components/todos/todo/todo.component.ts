@@ -50,6 +50,7 @@ export class TodoComponent implements OnInit {
       this.todoService.put(this.form.value).subscribe((response) => {
         if (response) {
           this.notyService.notifySuccess('Collection is saved successfully');
+          this.router.navigate(['todos']);
           this.ngOnInit();
         }
       });

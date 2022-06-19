@@ -4,7 +4,7 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TodoService } from '@app/services';
-import { merge, of } from 'rxjs';
+import { BehaviorSubject, merge, of, Subject } from 'rxjs';
 import { catchError, map, startWith, switchMap } from 'rxjs/operators';
 
 @Component({
@@ -14,12 +14,13 @@ import { catchError, map, startWith, switchMap } from 'rxjs/operators';
 })
 export class TodosComponent implements OnInit, AfterViewInit {
 
-  displayedColumns = ['title', 'description', 'targetDate', 'status'];
+  displayedColumns = ['title', 'description', 'targetDate', 'status', 'id'];
   dataSource = new MatTableDataSource();
 
   resultsLength = 0;
   isLoadingResults = true;
   isRateLimitReached = false;
+  change = new BehaviorSubject<any>(undefined);
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
@@ -35,7 +36,7 @@ export class TodosComponent implements OnInit, AfterViewInit {
     // If the user changes the sort order, reset back to the first page.
     this.sort?.sortChange?.subscribe(() => this.paginator.pageIndex = 0);
 
-    merge( this.paginator.page)
+    merge(this.change, this.paginator.page)
       .pipe(
         startWith({}),
         switchMap(() => {
@@ -65,7 +66,12 @@ export class TodosComponent implements OnInit, AfterViewInit {
     this.router.navigate([id], { relativeTo: this.route });
   }
 
-
+  deleteRow(id: any) {
+    this.service.delete(id).subscribe(x => {
+      console.log(x);
+      this.change.next(x);
+    })
+  }
 
 
 }
