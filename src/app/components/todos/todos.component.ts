@@ -16,7 +16,7 @@ export class TodosComponent implements OnInit, AfterViewInit {
 
   displayedColumns = ['title', 'description', 'targetDate', 'status', 'id'];
   dataSource = new MatTableDataSource();
-
+  searchKey = '';
   resultsLength = 0;
   isLoadingResults = true;
   isRateLimitReached = false;
@@ -41,7 +41,7 @@ export class TodosComponent implements OnInit, AfterViewInit {
         startWith({}),
         switchMap(() => {
           this.isLoadingResults = true;
-          return this.service.getPage(this.paginator.pageIndex + 1, this.paginator.pageSize, 'targetDate', this.sort.direction);
+          return this.service.getPage(this.paginator.pageIndex + 1, this.paginator.pageSize, 'targetDate', this.sort.direction, this.searchKey);
           // this.sort.active, this.sort.direction, this.paginator.pageIndex);
         }),
         map((data: any) => {
@@ -73,6 +73,10 @@ export class TodosComponent implements OnInit, AfterViewInit {
     })
   }
 
+  searchKeyChanged(value: string){
+    this.searchKey = value;
+    this.change.next(value);
+  }
 
 }
 
