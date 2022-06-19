@@ -3,7 +3,7 @@ import { AbstractControl, FormControl } from '@angular/forms';
 import { FloatLabelType } from '@angular/material/form-field';
 
 @Component({
-  selector: 'app-app-select',
+  selector: 'app-select',
   templateUrl: './app-select.component.html',
   styleUrls: ['./app-select.component.scss']
 })
@@ -17,7 +17,7 @@ export class AppSelectComponent implements OnInit {
   @Input() icon!: string;
   @Input() isDisabled!: boolean;
   @Input() floatLabel!: FloatLabelType;
-  @Input() options: any;
+  @Input() options!: Array<any>;
   control!: FormControl;
   isRequired!: boolean;
 

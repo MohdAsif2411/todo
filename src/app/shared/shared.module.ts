@@ -26,6 +26,8 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
+import {MatChipsModule} from '@angular/material/chips';
+
 
 
 
@@ -34,7 +36,7 @@ const materialModules = [
   MatButtonModule, MatOptionModule, MatDialogModule, MatSnackBarModule,
   MatSelectModule, MatInputModule, MatCardModule, MatIconModule, MatRadioModule,
   MatTableModule, MatPaginatorModule, MatSortModule, MatAutocompleteModule,
-  MatDatepickerModule, MatNativeDateModule
+  MatDatepickerModule, MatNativeDateModule, MatChipsModule,
 ]
 
 @NgModule({

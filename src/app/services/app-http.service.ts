@@ -15,23 +15,23 @@ export class AppHttpService {
     this.appUrl = environment.AppUrl;
   }
 
-  get(resourceUrl: string) {
-    return this.http.get(`${this.appUrl}${resourceUrl}`);
+  get<T>(resourceUrl: string) {
+    return this.http.get<T>(`${this.appUrl}${resourceUrl}`);
   }
 
-  getPage(resourceUrl: string) {
-    const response = this.http.get(`${this.appUrl}${resourceUrl}`, { observe: 'response' });
+  getPage<T>(resourceUrl: string) {
+    const response = this.http.get<T>(`${this.appUrl}${resourceUrl}`, { observe: 'response' });
     return response.pipe(
       map(x => ({ items: x.body, total_count: x.headers.get('X-Total-Count') }))
     );
   }
 
-  put(resourceUrl: string, form: any) {
+  put<T>(resourceUrl: string, form: any) {
     let response;
     if (form.id > 0) {
-      response = this.http.put(`${this.appUrl}${resourceUrl}/${form.id}`, form);
+      response = this.http.put<T>(`${this.appUrl}${resourceUrl}/${form.id}`, form);
     } else {
-      response = this.http.post(`${this.appUrl}${resourceUrl}`, form);
+      response = this.http.post<T>(`${this.appUrl}${resourceUrl}`, form);
     }
     return response;
   }

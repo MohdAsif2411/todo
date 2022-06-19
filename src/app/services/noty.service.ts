@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
-@Injectable()
+@Injectable({providedIn: 'root'})
 export class NotyService {
 
   constructor(private _snackbar: MatSnackBar) { }

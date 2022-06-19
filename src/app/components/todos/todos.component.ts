@@ -3,16 +3,16 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute, Router } from '@angular/router';
-import { todoService } from '@app/services';
+import { TodoService } from '@app/services';
 import { merge, of } from 'rxjs';
 import { catchError, map, startWith, switchMap } from 'rxjs/operators';
 
 @Component({
-  selector: 'app-todo',
-  templateUrl: './todo.component.html',
-  styleUrls: ['./todo.component.scss']
+  selector: 'app-todos',
+  templateUrl: './todos.component.html',
+  styleUrls: ['./todos.component.scss']
 })
-export class TodoComponent implements OnInit, AfterViewInit {
+export class TodosComponent implements OnInit, AfterViewInit {
 
   displayedColumns = ['title', 'description', 'targetDate', 'status'];
   dataSource = new MatTableDataSource();
@@ -24,7 +24,7 @@ export class TodoComponent implements OnInit, AfterViewInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
-  constructor(private service: todoService, private router: Router, private route: ActivatedRoute) { }
+  constructor(private service: TodoService, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit() {
 
@@ -61,9 +61,12 @@ export class TodoComponent implements OnInit, AfterViewInit {
   }
 
 
-  goToEntity(id: number) {
+  goToEntity(id: any) {
     this.router.navigate([id], { relativeTo: this.route });
   }
+
+
+
 
 }
 

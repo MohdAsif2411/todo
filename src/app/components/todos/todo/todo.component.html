@@ -1,0 +1,14 @@
+<mat-card>
+  <mat-card-title>{{id ? 'Edit' : 'Add'}} New Profile</mat-card-title>
+  <mat-card-content>
+    <form *ngIf="form" [formGroup]="form" (ngSubmit)="onSubmit()">
+      <app-input [form]="form" name="title" icon="badge" label="Title" type="text"></app-input>
+      <app-input [form]="form" name="description" icon="description" label="description" type="text"></app-input>
+      <app-input [form]="form" name="amount" icon="currency_rupee" label="Amount" type="number"></app-input>
+      <app-date [form]="form" name="targetDate" icon="event" label="Date"></app-date>
+      <app-select [form]="form" name="status" icon="share" [options]="statusOptions" label="Status"></app-select>
+      <button type="submit" mat-button mat-raised-button color="primary">Submit</button>
+      <button type="button" mat-button mat-raised-button [routerLink]="['']" class="floatRt">Back to List</button>
+    </form>
+  </mat-card-content>
+</mat-card>

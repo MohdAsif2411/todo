@@ -4,12 +4,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { TodoComponent } from './components/todos/todo.component';
+import { TodosComponent } from './components/todos/todos.component';
 import { SharedModule } from './shared';
+import { TodoComponent } from './components/todos/todo/todo.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    TodosComponent,
     TodoComponent,
   ],
   imports: [
