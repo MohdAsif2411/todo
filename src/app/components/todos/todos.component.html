@@ -1,10 +1,10 @@
 <mat-card>
-  <mat-card-title>Todo tasks list</mat-card-title>
+  <div class="head">TODO CRUD</div>
   <mat-card-content>
 
-    <mat-form-field>
+    <mat-form-field class="search-bar">
       <mat-icon matPrefix class="app-input-icon">search</mat-icon>
-      <input matInput [ngModel]="searchKey" placeholder="Search by Title" (ngModelChange)="searchKeyChanged($event)" type="text" />
+      <input matInput [ngModel]="searchKey" placeholder="Search by Title  " (ngModelChange)="searchKeyChanged($event)" type="text" />
     </mat-form-field>
 
     <mat-table #table [dataSource]="dataSource" matSort matSortActive="title" matSortDisableClear
