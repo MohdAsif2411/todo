@@ -6,7 +6,7 @@
       <app-input [form]="form" name="description" icon="description" label="description" type="text"></app-input>
       <app-input [form]="form" name="amount" icon="currency_rupee" label="Amount" type="number"></app-input>
       <app-date [form]="form" name="targetDate" icon="event" label="Date"></app-date>
-      <app-select [form]="form" name="status" icon="share" [options]="statusOptions" label="Status"></app-select>
+      <app-select [form]="form" name="status" icon="route" [options]="statusOptions" label="Status"></app-select>
       <button type="submit" mat-button mat-raised-button color="primary">Submit</button>
       <button type="button" mat-button mat-raised-button [routerLink]="['']" class="floatRt">Back to List</button>
     </form>
