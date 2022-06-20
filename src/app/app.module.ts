@@ -7,6 +7,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TodosComponent } from './components/todos/todos.component';
 import { SharedModule } from './shared';
 import { TodoComponent } from './components/todos/todo/todo.component';
+import { HashLocationStrategy, Location, LocationStrategy } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,9 @@ import { TodoComponent } from './components/todos/todo/todo.component';
     SharedModule,
 
   ],
-  providers: [],
+  providers: [
+   Location, { provide: LocationStrategy, useClass: HashLocationStrategy }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
